@@ -1,0 +1,8 @@
+<div id="tabsB">
+    <button class="button tab-button is-active" data-tab="hour">Hour</button>
+    <button class="button tab-button" data-tab="day">Day</button>
+    <button class="button tab-button" data-tab="month">Month</button>
+</div>
+<div id="tab_content">
+    {% if weather == undefined %}<div class="box"></div> {%else%} {% include "data_hour.njk" %} {%endif%}
+</div>

@@ -1,0 +1,54 @@
+<div class="wrapperMoj">
+    <div id="log">
+
+        <button id="logout" class="button" style="margin-bottom: 1rem;">Sign Out</button>
+        <label class="checkbox" style="left: 70%; padding: 0; margin: 0;">
+            <input id="dark_theme" type="checkbox" {{theme}} /> Dark Theme
+        </label>
+        <div id="panel">
+            <div class="box">
+                <div class="field">
+                    <label class="label">Country</label>
+                    <div class="control" id="countries">
+                        <div class="select">
+                            <select name="country" id="query_country" >
+                                {% for item in country_data %} 
+                                    <option class="cities" {% if item == item %}value="{{country}}"{%endif%}value="{{item.country_code}}" data-city="{{item.country_capital}}"
+                                    >{{item.country_name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div> 
+                </div>
+                <div class="field">
+                    <label class="label">City</label>
+                    <div class="control">
+                    <input id="query_city" value="{{city}}" class="input" type="text" placeholder="e.g. Belgrade, Canberra, Tokyo ... "  />
+                </div>
+            </div>
+    
+            <button id="show_weather" class="button">Show weather</button>
+        </div>
+
+        {% if weather %}
+        <div id="resoult">
+        <div>
+        <h1 class="subtitle is-2"  style="margin-top: 0.2srem; padding: 0;">Weather for {{weather.name}} , {{weather.sys.country}} 
+      
+        </h1>
+        <p><i>Base station cordinates:</i> &MediumSpace; lat :  {{ weather.coord.lat }} &deg; ,  lon : {{ weather.coord.lon }} &deg;
+        <hr>
+        <p> - Description: <b> {{ weather.weather[0].description }} </b>       <button id="unitsButton" class="button" style="margin-left: 1rem;">&deg; {{choice}}</button></p>
+        <p class="subtitle is-1">{{weather.main.temp}} <span class="symbol">&deg;{{Symbol}}</p>
+        <p>{{weather.main.temp_min}} <span class="symbol">&deg;{{Symbol}}</span> / {{weather.main.temp_max}} <span class="symbol">&deg;{{Symbol}}</span></p>
+       
+    
+        </div>
+        {% endif %}
+        </div>
+        <div id="tabs">
+        {% include "tabulator.njk" %}
+    </div> 
+</div>
+    

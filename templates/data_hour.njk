@@ -1,0 +1,10 @@
+<div class="box">
+    <p> Hour data</p>
+    {% if weather == "null" %} {%else%}
+    <hr>
+    <div>
+        <p>Rain  - {% if weather.rain.1h == null %}{%else%}  in last 1h : {{ weather.rain.1h }} mm {%endif%}</p>
+        <p>Wind  - {% if weather.wind.speed == null %}  {%else%}  speed : {{ weather.wind.speed }} {% if units == "imperial" %} mi/hr, {%else%}  m/sec {%endif%} {%endif%}</p>
+        {%endif%}
+    </div>
+</div>
